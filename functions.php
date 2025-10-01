@@ -26,3 +26,27 @@ if(!function_exists('bora_setup')) :
         ));
     }
 endif;
+add_action( 'after_setup_theme', 'bora_setup' );
+
+// Widgets / Sidebar
+function bora_widgets_init() {
+    register_sidebar( array(
+        'name'          => __( 'Sidebar', 'bora-starter' ),
+        'id'            => 'sidebar-1',
+        'before_widget' => '<section class="widget">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+}
+add_action( 'widgets_init', 'bora_widgets_init' );
+
+// Styles en scripts laden
+function bora_scripts() {
+    // Hoofd CSS bestand
+    wp_enqueue_style( 'bora-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
+
+    // Eventueel extra JS (voorbeeld)
+    // wp_enqueue_script( 'bora-script', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0', true );
+}
+add_action( 'wp_enqueue_scripts', 'bora_scripts' );
