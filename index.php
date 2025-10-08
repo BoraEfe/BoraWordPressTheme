@@ -1,14 +1,16 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>GreenTech Solutions</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/sass/main.css" />
-	</head>
-	<body class="is-preload">
+<?php get_header(); ?>
 
-		<!-- Wrapper -->
+<main id="site-content" role="main">
+<?php
+if ( have_posts() ) :
+    while ( have_posts() ) : the_post();
+        the_content();
+    endwhile;
+else :
+    // If no WordPress content, show the original static content
+?>
+<div class="static-content">
+
 			<div id="wrapper">
 
 				<!-- Header -->
@@ -104,16 +106,7 @@
 								</header>
 								<a href="single.html" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
 								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-								<footer>
-									<ul class="actions">
-										<li><a href="single.html" class="button large">Continue Reading</a></li>
-									</ul>
-									<ul class="stats">
-										<li><a href="#">General</a></li>
-										<li><a href="#" class="icon solid fa-heart">28</a></li>
-										<li><a href="#" class="icon solid fa-comment">128</a></li>
-									</ul>
-								</footer>
+								
 							</article>
 
 						<!-- Post -->
@@ -629,6 +622,8 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+</div>
+<?php endif; ?>
+</main>
 
-	</body>
-</html>
+<?php get_footer(); ?>
